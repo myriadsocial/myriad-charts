@@ -16,16 +16,16 @@ Myriad Social Helm Charts
 
 ## Chart Sources
 
-* `charts/node`: Myriad Node Chart
-* `charts/db`: Myriad DB Chart
-* `charts/api`: Myriad API Chart
-* `charts/web`: Myriad WebApp Chart
-* `charts/cms`: Myriad CMS Chart
+* `charts/myriad-node`: Myriad Node Chart
+* `charts/myriad-db`: Myriad DB Chart
+* `charts/myriad-api`: Myriad API Chart
+* `charts/myriad-web`: Myriad WebApp Chart
+* `charts/myriad-cms`: Myriad CMS Chart
 
 ## Usage
 
 ```bash
-helm repo add myriad https://charts.myriad.social
+helm repo add myriadsocial https://charts.myriad.social
 helm repo update
-helm install myriad-node myriad/node
+helm install myriad-node myriadsocial/myriad-node
 ```
