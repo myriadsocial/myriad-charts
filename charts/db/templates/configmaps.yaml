@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "myriad-db.mongoKeyConfigMapName" . }}
+data:
+  mongo.key: |
+    sbAEP0EpMzlGBIZ19fO92Eup3/WWqu97r+XBlrifIr0Sz926mF++S5rLpAe7ZXwa
+    9E25/Gm0BUfHXTDuUPaRDe++PK+g7ZHRBAqs1tHuCwPY31geRxkAs9qH54eqyliL
+    No9fOpMGV57zlY5OHkrg3OAuofFfxNO4Nclsq9/RD8QOaejHjFEVWRZYd2GwnLoj
+    e3bqZdqvh8cvzfCqRbH0EgID4p1/lLkDp7znvxWdiyZKPB+K9CI5x7d6iE5fbSd4
+    Ozg5qriqrqV1Poj3uRc7DM6GGFvMihdyO//VOdBnACJnbnvQAA69+/yCrn3rY7PM
+    GaUUjzNTx/O1z/8aBAdj1LJ4wTvitzrmFcZ/gkr7CXVcaZx7RGMi/b9GLTiV/ATM
+    ZNCz2MDdqmO0zHmeFe6XGL3H4c4gK/XTU7pL6t+bai8gKsgSwP6I93pGEUj/s5vu
+    bYWsR6ol9+AkJMbN2y2n+hJuRWho+pWmeYk2nAEQsTJMFOTbBKF4oyj0tb9hL9+r
+    BLOfLccxCrdIIhVIAvPST4K6MRwOijnw6VQiMskRAbd52u1mAH1fVonOkkpWIl/e
+    Bp6MBhcKMBhvb42Q67dnNn6vkjSrn5KflFgbu9PqzmjFn4IzRqmdQzg/fgFmVJ/d
+    hMtyrWnu+0qNQwD1Bv0oEJIp3jf9yPaS/jdMX6AHkiAdYL699P08Tf9kC6WbmH5i
+    s5DhGc+M9YwP6GHqLdnqC6LBzNRqmnyvqQDHJUOuFlUyCibLKrFI0S6J7rBziI0t
+    7Icg7EUHjZEkMFNP157sehpodV0w3AVJqaNPQB/0TyvB80KjK8tmo5jDi7yeI5ci
+    i5O5tYWez/bTfW84PuyCDhwGD4XEXkpLnSQp1xYGjDA5Q7P2aaKxabGVfttJvrJY
+    2GmH4Zc9V5dGiMb3EmrX6JVq1ussPfmclW1NAXHbCz5S8BmJx0ZsOJv5Dhz3E9Nw
+    IMCneOatFgBOMbhJnM3Fr7vXb/WxTqGAf7vW+ffn5C1tzIM
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "myriad-db.mongoInitConfigMapName" . }}
+data:
+  mongo-init.js: |
+    const targetDbStr = 'myriad';
+    const rootUser = cat('/etc/secrets/MONGO_ROOT_USERNAME');
+    const rootPass = cat('/etc/secrets/MONGO_ROOT_PASSWORD');
+    const usersStr = cat('/etc/secrets/MONGO_USERS_LIST'); // user1:role1A,role1B:pass1[;user2:role2A,role2B:pass2...]
+
+    // auth against admin
+    const adminDb = db.getSiblingDB('admin');
+    adminDb.auth(rootUser, rootPass);
+    print('Successfully authenticated admin user');
+
+    // we'll create the users here
+    const targetDb = db.getSiblingDB(targetDbStr);
+
+    // user-defined roles should be stored in the admin db
+    const customRoles = adminDb
+      .getRoles({rolesInfo: 1, showBuiltinRoles: false})
+      .map(role => role.role)
+      .filter(Boolean);
+
+    // parse the list of users, and create each user as needed
+    usersStr
+      .trim()
+      .split(';')
+      .map(s => s.split(':'))
+      .forEach(user => {
+        const username = user[0];
+        const rolesStr = user[1];
+        const password = user[2];
+
+        if (!rolesStr || !password) {
+          return;
+        }
+
+        const roles = rolesStr.split(',');
+        const userDoc = {
+          user: username,
+          pwd: password,
+        };
+
+        userDoc.roles = roles.map(role => {
+          if (!~customRoles.indexOf(role)) {
+            // is this a user defined role?
+            return role; // no, it is built-in, just use the role name
+          }
+          return {role: role, db: 'admin'}; // yes, user-defined, specify the long format
+        });
+
+        try {
+          targetDb.createUser(userDoc);
+        } catch (err) {
+          if (!~err.message.toLowerCase().indexOf('duplicate')) {
+            // if not a duplicate user
+            throw err; // rethrow
+          }
+        }
+      });
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "myriad-db.mongoScriptConfigMapName" . }}
+data:
+  mongo-data-dir-permission.sh: |
+    chown -R mongodb:mongodb ${MONGO_DATA_DIR}
+    cp -r /var/lib/mongoKeyTemp /var/lib/mongoKey
+    chown -R mongodb:mongodb /var/lib/mongoKey
+    chmod 400 /var/lib/mongoKey/mongo.key
+    chown -R mongodb:mongodb /var/lib/mongoKey/mongo.key
