@@ -5,14 +5,15 @@
 <br>
 
 <div align="Center">
-<h1>Myriad Node</h1>
+<h1>Myriad Charts</h1>
 <h2>It's Your Turn to Own Your Web</h2>
 Starting with Myriad.Social, we are creating a platform where social app, metaverse and messenger seamlessly integrate, together and with further applications. As a user, a content creator or a builder, Myriad is designed to be yours.
 <br>
 <br>
 
-[![](https://github.com/myriadsocial/charts/workflows/Release%20Charts/badge.svg?branch=main)](https://github.com/myriadsocial/charts/actions)
 [![Medium](https://img.shields.io/badge/Medium-Myriad-brightgreen?logo=medium)](https://medium.com/@myriadsocial.blog)
+[![](https://github.com/myriadsocial/myriad-charts/workflows/Test/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/test.yaml)
+[![](https://github.com/myriadsocial/myriad-charts/workflows/Release/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/release.yaml)
 </div>
 
 ---
