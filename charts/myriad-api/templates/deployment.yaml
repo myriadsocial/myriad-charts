@@ -92,8 +92,8 @@ spec:
                   key: refreshTokenSecretKey
             - name: JWT_REFRESH_TOKEN_EXPIRES_IN
               value: {{ .Values.config.jwt.refreshTokenExpireIn | quote }}
-            - name: JWT_REFRESH_TOKEN_EXPIRES_IN
-              value: {{ .Values.config.jwt.refreshTokenExpireIn | quote }}
+            - name: JWT_EMAIL
+              value: {{ .Values.config.jwt.email | quote }}
             {{- end }}
             - name: MONGO_HOST
               value: {{ .Values.config.mongo.host }}
