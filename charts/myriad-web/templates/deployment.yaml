@@ -65,8 +65,6 @@ spec:
                   name: {{ include "myriad-web.apiSecretName" . }}
                   key: key
             {{- end }}
-            - name: NEXT_PUBLIC_MYRIAD_RPC_WS_URL
-              value: {{ .Values.config.rpcWSURL }}
             - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
               value: {{ .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
@@ -111,13 +109,6 @@ spec:
                 secretKeyRef:
                   name: {{ include "myriad-web.facebookSecretName" . }}
                   key: appId
-            {{- end }}
-            {{- if .Values.config.twitter.apiKey }}
-            - name: TWITTER_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-web.twitterSecretName" . }}
-                  key: apiKey
             {{- end }}
           ports:
             - name: http
