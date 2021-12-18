@@ -20,7 +20,6 @@ config:
   nextSecret: ""
   apiURL: ""
   apiKey: ""
-  rpcWSURL: ""
   websiteURL: ""
   supportMail: ""
   firebase:
@@ -33,8 +32,6 @@ config:
     dsn: ""
   facebook:
     appId: ""
-  twitter:
-    apiKey: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
