@@ -16,6 +16,7 @@ imagePullSecrets: []
 config:
   appName: ""
   appStatus: ""
+  appVersion: ""
   nextAuthURL: ""
   nextSecret: ""
   apiURL: ""
