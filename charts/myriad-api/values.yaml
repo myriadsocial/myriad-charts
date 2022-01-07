@@ -14,6 +14,8 @@ image:
 imagePullSecrets: []
 
 config:
+  openApiDisable: ""
+  explorerDisable: ""
   rpcWSURL: ""
   officialAccountPublicKey: ""
   faucetMnemonic: ""
@@ -40,8 +42,6 @@ config:
     apiKey: ""
   coinMarketCap:
     apiKey: ""
-  openApiDisable: ""
-  explorerDisable: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
