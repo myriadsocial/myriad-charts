@@ -28,8 +28,7 @@ config:
     refreshTokenExpireIn: 3600
     email: ""
   mongo:
-    host: ""
-    port: 27017
+    hosts: ""
     user: ""
     password: ""
     database: myriad

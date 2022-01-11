@@ -107,8 +107,8 @@ spec:
             - name: JWT_EMAIL
               value: {{ .Values.config.jwt.email | quote }}
             {{- end }}
-            - name: MONGO_HOST
-              value: {{ .Values.config.mongo.host }}
+            - name: MONGO_HOSTS
+              value: {{ .Values.config.mongo.hosts | quote }}
             - name: MONGO_PORT
               value: {{ .Values.config.mongo.port | quote }}
             {{- if and .Values.config.mongo.user .Values.config.mongo.password }}
