@@ -85,7 +85,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/bin/sh","-c"]
-          args: ["/home/mongodb/mongo-data-dir-permission.sh && docker-entrypoint.sh mongod --replSet=rs0 --dbpath=/var/lib/mongodb --bind_ip=0.0.0.0 --smallfiles --noprealloc --keyFile=/var/lib/mongoKey/mongo.key"]
+          args: ["/home/mongodb/mongo-data-dir-permission.sh && docker-entrypoint.sh mongod --replSet=rs0 --dbpath=/var/lib/mongodb --bind_ip=0.0.0.0 --noprealloc --keyFile=/var/lib/mongoKey/mongo.key"]
           env:
             - name: MONGO_DATA_DIR
               value: /var/lib/mongodb
