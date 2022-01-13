@@ -107,10 +107,18 @@ spec:
             - name: JWT_EMAIL
               value: {{ .Values.config.jwt.email | quote }}
             {{- end }}
-            - name: MONGO_HOSTS
-              value: {{ .Values.config.mongo.hosts | quote }}
+            {{- if .Values.config.mongo.protocol }}
+            - name: MONGO_PROTOCOL
+              value: {{ .Values.config.mongo.protocol | quote }}
+            {{- end }}
+            {{- if .Values.config.mongo.host }}
+            - name: MONGO_HOST
+              value: {{ .Values.config.mongo.host }}
+            {{- end }}
+            {{- if .Values.config.mongo.port }}
             - name: MONGO_PORT
               value: {{ .Values.config.mongo.port | quote }}
+            {{- end }}
             {{- if and .Values.config.mongo.user .Values.config.mongo.password }}
             - name: MONGO_USER
               valueFrom:
@@ -123,8 +131,14 @@ spec:
                   name: {{ include "myriad-api.mongoSecretName" . }}
                   key: password
             {{- end }}
+            {{- if .Values.config.mongo.database }}
             - name: MONGO_DATABASE
               value: {{ .Values.config.mongo.database }}
+            {{- end }}
+            {{- if .Values.config.mongo.url }}
+            - name: MONGO_URL
+              value: {{ .Values.config.mongo.url | quote }}
+            {{- end }}
             {{- if .Values.config.firebase.serviceAccountBase64 }}
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /etc/google/sa_credentials.json
