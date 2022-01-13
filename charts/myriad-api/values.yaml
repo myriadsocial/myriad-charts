@@ -28,10 +28,13 @@ config:
     refreshTokenExpireIn: 3600
     email: ""
   mongo:
-    hosts: ""
+    protocol: mongodb
+    host: ""
+    port: 27017
     user: ""
     password: ""
     database: myriad
+    url: ""
   firebase:
     serviceAccountBase64: ""
     storageBucket: ""
