@@ -68,7 +68,7 @@ spec:
             - name: REACT_APP_MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-db.apiKeySecretName" . }}
+                  name: {{ include "myriad-cms.apiKeySecretName" . }}
                   key: apiKey
             {{- end }}
             {{- if .Values.config.websiteUrl }}
