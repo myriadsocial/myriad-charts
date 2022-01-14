@@ -62,22 +62,8 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of app Base Layout Config Key secret.
+Create the name of Api Key secret.
 */}}
-{{- define "myriad-cms.appBaseLayoutConfigKeySecretName" -}}
-{{- printf "%s-%s" (include "myriad-cms.fullname" .) "app-base-layout-config-key" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
-{{/*
-Create the name of app Api Url secret.
-*/}}
-{{- define "myriad-cms.appApiUrlSecretName" -}}
-{{- printf "%s-%s" (include "myriad-cms.fullname" .) "app-api-url" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
-{{/*
-Create the name of app Web Url secret.
-*/}}
-{{- define "myriad-cms.appWebUrlSecretName" -}}
-{{- printf "%s-%s" (include "myriad-cms.fullname" .) "app-web-url" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-cms.apiKeySecretName" -}}
+{{- printf "%s-%s" (include "myriad-cms.fullname" .) "api-key" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}

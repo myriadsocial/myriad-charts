@@ -14,20 +14,13 @@ image:
 imagePullSecrets: []
 
 config:
+  host: ""
   port: 3000
-  appBaseLayoutConfigKey: ""
-  appApiUrl: ""
-  appWebUrl: ""
-  appVersion: ""
-  appThemeName: ""
-  appThemeDemo: ""
-  appBootstrapDocsLink: ""
-  appSassPath: ""
-  appSassVariablePath: ""
-  appPurchaseUrl: ""
-  appPreviewUrl: ""
-  appPreviewReactUrl: ""
-  appPreviewDocsUrl: ""
+  webUrl: ""
+  apiUrl: ""
+  apiKey: ""
+  websiteUrl: ""
+  supportMail: ""
   startupProbe:
     path: ""
   livenessProbe:

@@ -48,70 +48,36 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            {{- if .Values.config.host }}
+            - name: HOST
+              value: "{{ .Values.config.host }}"
+            {{- end }}
             {{- if .Values.config.port }}
             - name: PORT
               value: "{{ .Values.config.port }}"
             {{- end }}
-            {{- if .Values.config.appBaseLayoutConfigKey }}
-            - name: REACT_APP_BASE_LAYOUT_CONFIG_KEY
+            {{- if .Values.config.webUrl }}
+            - name: REACT_APP_MYRIAD_WEB_URL
+              value: "{{ .Values.config.webUrl }}"
+            {{- end }}
+            {{- if .Values.config.apiUrl }}
+            - name: REACT_APP_MYRIAD_API_URL
+              value: "{{ .Values.config.apiUrl }}"
+            {{- end }}
+            {{- if .Values.config.apiKey }}
+            - name: REACT_APP_MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-cms.appBaseLayoutConfigKeySecretName" . }}
-                  key: appBaseLayoutConfigKey
+                  name: {{ include "myriad-db.apiKeySecretName" . }}
+                  key: apiKey
             {{- end }}
-            {{- if .Values.config.appApiUrl }}
-            - name: REACT_APP_API_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-cms.appApiUrlSecretName" . }}
-                  key: appApiUrl
+            {{- if .Values.config.websiteUrl }}
+            - name: REACT_APP_MYRIAD_WEBSITE_URL
+              value: "{{ .Values.config.websiteUrl }}"
             {{- end }}
-            {{- if .Values.config.appWebUrl }}
-            - name: REACT_APP_WEB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-cms.appWebUrlSecretName" . }}
-                  key: appWebUrl
-            {{- end }}
-            {{- if .Values.config.appVersion }}
-            - name: REACT_APP_VERSION
-              value: {{ .Values.config.appVersion }}
-            {{- end }}
-            {{- if .Values.config.appThemeName }}
-            - name: REACT_APP_THEME_NAME
-              value: {{ .Values.config.appThemeName }}
-            {{- end }}
-            {{- if .Values.config.appThemeDemo }}
-            - name: REACT_APP_THEME_DEMO
-              value: {{ .Values.config.appThemeDemo }}
-            {{- end }}
-            {{- if .Values.config.appBootstrapDocsLink }}
-            - name: REACT_APP_BOOTSTRAP_DOCS_LINK
-              value: {{ .Values.config.appBootstrapDocsLink }}
-            {{- end }}
-            {{- if .Values.config.appSassPath }}
-            - name: REACT_APP_SASS_PATH
-              value: {{ .Values.config.appSassPath }}
-            {{- end }}
-            {{- if .Values.config.appSassVariablePath }}
-            - name: REACT_APP_SASS_VARIABLES_PATH
-              value: {{ .Values.config.appSassVariablePath }}
-            {{- end }}
-            {{- if .Values.config.appPurchaseUrl }}
-            - name: REACT_APP_PURCHASE_URL
-              value: {{ .Values.config.appPurchaseUrl }}
-            {{- end }}
-            {{- if .Values.config.appPreviewUrl }}
-            - name: REACT_APP_PREVIEW_URL
-              value: {{ .Values.config.appPreviewUrl }}
-            {{- end }}
-            {{- if .Values.config.appPreviewReactUrl }}
-            - name: REACT_APP_PREVIEW_REACT_URL
-              value: {{ .Values.config.appPreviewReactUrl }}
-            {{- end }}
-            {{- if .Values.config.appPreviewDocsUrl }}
-            - name: REACT_APP_PREVIEW_DOCS_URL
-              value: {{ .Values.config.appPreviewDocsUrl }}
+            {{- if .Values.config.supportMail }}
+            - name: REACT_APP_MYRIAD_SUPPORT_MAIL
+              value: "{{ .Values.config.supportMail }}"
             {{- end }}
           ports:
             - name: http
