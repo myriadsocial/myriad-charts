@@ -57,14 +57,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- if .Values.config.openApiDisable }}
-            - name: APP_OPEN_API_DISABLED
-              value: {{ .Values.config.openApiDisable | quote }}
-            {{- end }}
-            {{- if .Values.config.explorerDisable }}
-            - name: APP_EXPLORER_DISABLED
-              value: {{ .Values.config.explorerDisable | quote }}
-            {{- end }}
             {{- if .Values.config.rpcWSURL }}
             - name: MYRIAD_RPC_WS_URL
               value: {{ .Values.config.rpcWSURL }}
@@ -104,8 +96,6 @@ spec:
                   key: refreshTokenSecretKey
             - name: JWT_REFRESH_TOKEN_EXPIRES_IN
               value: {{ .Values.config.jwt.refreshTokenExpireIn | quote }}
-            - name: JWT_EMAIL
-              value: {{ .Values.config.jwt.email | quote }}
             {{- end }}
             {{- if .Values.config.mongo.protocol }}
             - name: MONGO_PROTOCOL

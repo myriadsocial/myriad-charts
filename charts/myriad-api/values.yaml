@@ -14,19 +14,16 @@ image:
 imagePullSecrets: []
 
 config:
-  openApiDisable: ""
-  explorerDisable: ""
   rpcWSURL: ""
   officialAccountPublicKey: ""
   faucetMnemonic: ""
-  rewardAmount: 1
+  rewardAmount: 0
   escrowSecretKey: ""
   jwt:
     tokenSecretKey: ""
     tokenExpireIn: 3600
     refreshTokenSecretKey: ""
     refreshTokenExpireIn: 3600
-    email: ""
   mongo:
     protocol: mongodb
     host: ""
