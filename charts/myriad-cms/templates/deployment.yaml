@@ -48,21 +48,21 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- if .Values.config.host }}
-            - name: HOST
-              value: "{{ .Values.config.host }}"
+            {{- if .Values.config.websiteURL }}
+            - name: REACT_APP_MYRIAD_WEBSITE_URL
+              value: "{{ .Values.config.websiteURL }}"
             {{- end }}
-            {{- if .Values.config.port }}
-            - name: PORT
-              value: "{{ .Values.config.port }}"
+            {{- if .Values.config.supportMail }}
+            - name: REACT_APP_MYRIAD_SUPPORT_MAIL
+              value: "{{ .Values.config.supportMail }}"
             {{- end }}
-            {{- if .Values.config.webUrl }}
+            {{- if .Values.config.webURL }}
             - name: REACT_APP_MYRIAD_WEB_URL
-              value: "{{ .Values.config.webUrl }}"
+              value: "{{ .Values.config.webURL }}"
             {{- end }}
-            {{- if .Values.config.apiUrl }}
+            {{- if .Values.config.apiURL }}
             - name: REACT_APP_MYRIAD_API_URL
-              value: "{{ .Values.config.apiUrl }}"
+              value: "{{ .Values.config.apiURL }}"
             {{- end }}
             {{- if .Values.config.apiKey }}
             - name: REACT_APP_MYRIAD_API_KEY
@@ -70,14 +70,6 @@ spec:
                 secretKeyRef:
                   name: {{ include "myriad-cms.apiKeySecretName" . }}
                   key: apiKey
-            {{- end }}
-            {{- if .Values.config.websiteUrl }}
-            - name: REACT_APP_MYRIAD_WEBSITE_URL
-              value: "{{ .Values.config.websiteUrl }}"
-            {{- end }}
-            {{- if .Values.config.supportMail }}
-            - name: REACT_APP_MYRIAD_SUPPORT_MAIL
-              value: "{{ .Values.config.supportMail }}"
             {{- end }}
           ports:
             - name: http

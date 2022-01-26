@@ -9,18 +9,18 @@ image:
   repository: myriadsocial/myriad-cms
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  tag: ""
 
 imagePullSecrets: []
 
 config:
   host: ""
   port: 3000
-  webUrl: ""
-  apiUrl: ""
-  apiKey: ""
-  websiteUrl: ""
+  websiteURL: ""
   supportMail: ""
+  webURL: ""
+  apiURL: ""
+  apiKey: ""
   startupProbe:
     path: ""
   livenessProbe:
@@ -39,12 +39,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 1001
+podSecurityContext:
+  fsGroup: 1001
 
-securityContext: {}
-  # runAsNonRoot: true
-  # runAsUser: 1001
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
 
 service:
   type: ClusterIP

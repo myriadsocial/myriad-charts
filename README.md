@@ -12,8 +12,8 @@ Starting with Myriad.Social, we are creating a platform where social app, metave
 <br>
 
 [![Medium](https://img.shields.io/badge/Medium-Myriad-brightgreen?logo=medium)](https://medium.com/@myriadsocial.blog)
-[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/test.yaml)
-[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/release.yaml)
+[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/tester.yaml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/tester.yaml)
+[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/releaser.yaml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/releaser.yaml)
 </div>
 
 ---
