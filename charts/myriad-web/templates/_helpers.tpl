@@ -62,10 +62,10 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of api secret.
+Create the name of app secret.
 */}}
-{{- define "myriad-web.apiSecretName" -}}
-{{- printf "%s-%s" (include "myriad-web.fullname" .) "api" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-web.appSecretName" -}}
+{{- printf "%s-%s" (include "myriad-web.fullname" .) "app" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*

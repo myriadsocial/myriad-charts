@@ -14,15 +14,14 @@ image:
 imagePullSecrets: []
 
 config:
+  appEnvironment: ""
   appName: ""
-  appStatus: ""
   appVersion: ""
-  nextAuthURL: ""
-  nextSecret: ""
-  apiURL: ""
-  apiKey: ""
+  appAuthURL: ""
+  appSecret: ""
   websiteURL: ""
   supportMail: ""
+  apiURL: ""
   firebase:
     projectId: ""
     apiKey: ""
