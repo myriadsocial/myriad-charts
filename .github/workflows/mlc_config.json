@@ -1,1 +1,7 @@
-{}
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://medium.com/@myriadsocial.blog"
+    }
+  ]
+}

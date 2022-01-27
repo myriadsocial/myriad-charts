@@ -48,29 +48,27 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: NEXT_PUBLIC_APP_ENVIRONMENT
+              value: {{ .Values.config.appEnvironment }}
             - name: NEXT_PUBLIC_APP_NAME
               value: {{ .Values.config.appName }}
-            - name: NEXT_PUBLIC_APP_STATUS
-              value: {{ .Values.config.appStatus }}
             - name: NEXT_PUBLIC_APP_VERSION
               value: {{ .Values.config.appVersion }}
             - name: NEXTAUTH_URL
-              value: {{ .Values.config.nextAuthURL }}
+              value: {{ .Values.config.appAuthURL }}
+            {{- if .Values.config.appSecret }}
             - name: SECRET
-              value: {{ .Values.config.nextSecret }}
-            - name: MYRIAD_API_URL
-              value: {{ .Values.config.apiURL }}
-            {{- if .Values.config.apiKey }}
-            - name: MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-web.apiSecretName" . }}
-                  key: key
+                  name: {{ include "myriad-web.appSecretName" . }}
+                  key: secret
             {{- end }}
             - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
               value: {{ .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
               value: {{ .Values.config.supportMail }}
+            - name: MYRIAD_API_URL
+              value: {{ .Values.config.apiURL }}
             {{- if and (and (and .Values.config.firebase.apiKey .Values.config.firebase.projectId) (and .Values.config.firebase.messagingSenderId .Values.config.firebase.appId)) .Values.config.firebase.measurementId }}
             - name: NEXT_PUBLIC_FIREBASE_API_KEY
               valueFrom:
