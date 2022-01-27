@@ -54,10 +54,10 @@ spec:
               value: {{ .Values.config.appName }}
             - name: NEXT_PUBLIC_APP_VERSION
               value: {{ .Values.config.appVersion }}
-            - name: NEXT_PUBLIC_APP_AUTH_URL
+            - name: NEXTAUTH_URL
               value: {{ .Values.config.appAuthURL }}
             {{- if .Values.config.appSecret }}
-            - name: APP_SECRET
+            - name: SECRET
               valueFrom:
                 secretKeyRef:
                   name: {{ include "myriad-web.appSecretName" . }}
