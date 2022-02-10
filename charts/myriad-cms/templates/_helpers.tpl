@@ -67,3 +67,10 @@ Create the name of Api Key secret.
 {{- define "myriad-cms.apiKeySecretName" -}}
 {{- printf "%s-%s" (include "myriad-cms.fullname" .) "api-key" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
+
+{{/*
+Create the name of Admin Auth secret.
+*/}}
+{{- define "myriad-cms.adminSecretName" -}}
+{{- printf "%s-%s" (include "myriad-cms.fullname" .) "admin-auth" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}

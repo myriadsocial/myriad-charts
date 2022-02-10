@@ -71,6 +71,20 @@ spec:
                   name: {{ include "myriad-cms.apiKeySecretName" . }}
                   key: apiKey
             {{- end }}
+            {{- if .Values.config.admin.email }}
+            - name: REACT_APP_MYRIAD_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-cms.adminSecretName" . }}
+                  key: email
+            {{- end }}
+            {{- if .Values.config.admin.password }}
+            - name: REACT_APP_MYRIAD_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-cms.adminSecretName" . }}
+                  key: password
+            {{- end }}
           ports:
             - name: http
               containerPort: 3000

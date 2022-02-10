@@ -21,6 +21,9 @@ config:
   webURL: ""
   apiURL: ""
   apiKey: ""
+  admin:
+    email: ""
+    password: ""
   startupProbe:
     path: ""
   livenessProbe:
