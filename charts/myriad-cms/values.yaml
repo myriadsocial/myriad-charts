@@ -42,12 +42,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext:
-  fsGroup: 1001
+podSecurityContext: {}
+  # fsGroup: 1001
 
-securityContext:
-  runAsNonRoot: true
-  runAsUser: 1001
+securityContext: {}
+  # runAsNonRoot: true
+  # runAsUser: 1001
 
 service:
   type: ClusterIP
