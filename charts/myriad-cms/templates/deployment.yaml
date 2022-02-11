@@ -87,7 +87,7 @@ spec:
             {{- end }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 80
               protocol: TCP
           {{- if .Values.config.startupProbe.path }}
           startupProbe:
