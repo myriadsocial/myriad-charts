@@ -26,6 +26,7 @@ config:
     projectId: ""
     apiKey: ""
     messagingSenderId: ""
+    storageBucket: ""
     appId: ""
     measurementId: ""
   sentry:
