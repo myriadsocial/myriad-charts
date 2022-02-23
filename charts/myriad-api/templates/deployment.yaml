@@ -129,6 +129,28 @@ spec:
             - name: MONGO_URL
               value: {{ .Values.config.mongo.url | quote }}
             {{- end }}
+            {{- if and .Values.config.redis.connector .Values.config.redis.host .Values.config.redis.port .Values.config.redis.password }}
+            - name: REDIS_CONNECTOR
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.redisSecretName" . }}
+                  key: connector
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.redisSecretName" . }}
+                  key: host
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.redisSecretName" . }}
+                  key: port
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.redisSecretName" . }}
+                  key: password
+            {{- end }}
             {{- if .Values.config.firebase.serviceAccountBase64 }}
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /etc/google/sa_credentials.json

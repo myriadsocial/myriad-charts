@@ -90,6 +90,13 @@ Create the name of mongo secret.
 {{- end }}
 
 {{/*
+Create the name of redis secret.
+*/}}
+{{- define "myriad-api.redisSecretName" -}}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "redis" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
 Create the name of firebase secret.
 */}}
 {{- define "myriad-api.firebaseSecretName" -}}

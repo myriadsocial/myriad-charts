@@ -32,6 +32,11 @@ config:
     password: ""
     database: myriad
     url: ""
+  redis:
+    connector: ""
+    host: ""
+    port: ""
+    password: ""
   firebase:
     serviceAccountBase64: ""
     storageBucket: ""
