@@ -33,6 +33,11 @@ config:
     dsn: ""
   facebook:
     appId: ""
+  near:
+    networkId: ""
+    nodeUrl: ""
+    walletUrl: ""
+    helperUrl: ""
 
 serviceAccount:
   # Specifies whether a service account should be created

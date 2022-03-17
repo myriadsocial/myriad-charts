@@ -115,6 +115,22 @@ spec:
                   name: {{ include "myriad-web.facebookSecretName" . }}
                   key: appId
             {{- end }}
+            {{- if .Values.config.near.networkId }}
+            - name: NEAR_NETWORK_ID
+              value: {{ .Values.config.near.networkId }}
+            {{- end }}
+            {{- if .Values.config.near.nodeUrl }}
+            - name: NEAR_NODE_URL
+              value: {{ .Values.config.near.nodeUrl }}
+            {{- end }}
+            {{- if .Values.config.near.walletUrl }}
+            - name: NEAR_WALLET_URL
+              value: {{ .Values.config.near.walletUrl }}
+            {{- end }}
+            {{- if .Values.config.near.helperUrl }}
+            - name: NEAR_HELPER_URL
+              value: {{ .Values.config.near.helperUrl }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 3000
