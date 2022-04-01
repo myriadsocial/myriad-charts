@@ -101,6 +101,9 @@ spec:
               {{- if .name }}
               --name={{ .name }}
               {{- end }}
+              {{- if .archive }}
+              --pruning=archive
+              {{- end }}
               {{- if .validator }}
               --validator
               --enable-offchain-indexing=true
