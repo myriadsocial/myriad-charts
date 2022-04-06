@@ -61,9 +61,20 @@ spec:
             - name: MYRIAD_RPC_WS_URL
               value: {{ .Values.config.rpcWSURL }}
             {{- end }}
+            {{- if .Values.config.serverId }}
+            - name: MYRIAD_SERVER_ID
+              value: {{ .Values.config.serverId }}
+            {{- end }}
             {{- if .Values.config.officialAccountPublicKey }}
             - name: MYRIAD_OFFICIAL_ACCOUNT_PUBLIC_KEY
               value: {{ .Values.config.officialAccountPublicKey }}
+            {{- end }}
+            {{- if .Values.config.adminMnemonic }}
+            - name: MYRIAD_ADMIN_MNEMONIC
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.adminSecretName" . }}
+                  key: mnemonic
             {{- end }}
             {{- if .Values.config.faucetMnemonic }}
             - name: MYRIAD_FAUCET_MNEMONIC
@@ -72,15 +83,8 @@ spec:
                   name: {{ include "myriad-api.faucetSecretName" . }}
                   key: mnemonic
             {{- end }}
-            - name: MYRIAD_REWARD_AMOUNT
-              value: {{ .Values.config.rewardAmount | quote }}
-            {{- if .Values.config.escrowSecretKey }}
-            - name: MYRIAD_ESCROW_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-api.escrowSecretName" . }}
-                  key: secretKey
-            {{- end }}
+            - name: MYRIAD_FAUCET_AMOUNT
+              value: {{ .Values.config.faucetAmount | quote }}
             {{- if and .Values.config.jwt.tokenSecretKey .Values.config.jwt.refreshTokenSecretKey }}
             - name: JWT_TOKEN_SECRET_KEY
               valueFrom:
