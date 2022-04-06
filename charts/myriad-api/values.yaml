@@ -15,10 +15,11 @@ imagePullSecrets: []
 
 config:
   rpcWSURL: ""
+  serverId: ""
   officialAccountPublicKey: ""
+  adminMnemonic: ""
   faucetMnemonic: ""
-  rewardAmount: 0
-  escrowSecretKey: ""
+  faucetAmount: 0
   jwt:
     tokenSecretKey: ""
     tokenExpireIn: 3600

@@ -69,10 +69,10 @@ Create the name of faucet secret.
 {{- end }}
 
 {{/*
-Create the name of escrow secret.
+Create the name of admin secret.
 */}}
-{{- define "myriad-api.escrowSecretName" -}}
-{{- printf "%s-%s" (include "myriad-api.fullname" .) "escrow" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-api.adminSecretName" -}}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "admin" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
