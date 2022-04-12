@@ -16,7 +16,6 @@ imagePullSecrets: []
 config:
   rpcWSURL: ""
   serverId: ""
-  officialAccountPublicKey: ""
   adminMnemonic: ""
   faucetMnemonic: ""
   faucetAmount: 0

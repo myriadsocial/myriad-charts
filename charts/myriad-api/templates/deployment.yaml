@@ -65,10 +65,6 @@ spec:
             - name: MYRIAD_SERVER_ID
               value: {{ .Values.config.serverId }}
             {{- end }}
-            {{- if .Values.config.officialAccountPublicKey }}
-            - name: MYRIAD_OFFICIAL_ACCOUNT_PUBLIC_KEY
-              value: {{ .Values.config.officialAccountPublicKey }}
-            {{- end }}
             {{- if .Values.config.adminMnemonic }}
             - name: MYRIAD_ADMIN_MNEMONIC
               valueFrom:
