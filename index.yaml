@@ -83,6 +83,19 @@ entries:
     version: 0.0.1
   myriad-node:
   - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-04-12T05:14:51.63343374Z"
+    description: A Helm chart for Kubernetes
+    digest: d914819575ad2beb9845e9ff673419792aaf108305ac44af1bb9805047f306d0
+    maintainers:
+    - email: myriad.dev@blocksphere.id
+      name: myriadsocial
+    name: myriad-node
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-node-2.0.0/myriad-node-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2022-01-27T08:29:51.418157337Z"
     description: A Helm chart for Kubernetes
@@ -148,4 +161,4 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-0.0.1/myriad-web-0.0.1.tgz
     version: 0.0.1
-generated: "2022-03-25T07:33:52.071312416Z"
+generated: "2022-04-12T05:14:51.63346234Z"
