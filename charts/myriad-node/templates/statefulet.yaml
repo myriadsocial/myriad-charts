@@ -117,7 +117,11 @@ spec:
               --unsafe-ws-external
               --prometheus-port=9615
               --prometheus-external
+              {{- if .telemetry }}
+              --telemetry-url="{{ $.Values.config.telemetryUrl }}"
+              {{- else }}
               --no-telemetry
+              {{- end }}
               {{- $name := .name }}
               {{- range $value := $.Values.config.nodes }}
               {{- if and $value.bootnode (ne $value.name $name ) }}
