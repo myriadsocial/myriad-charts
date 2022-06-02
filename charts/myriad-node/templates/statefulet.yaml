@@ -99,7 +99,7 @@ spec:
               --node-key=$(cat /etc/secrets/node-key/key)
               {{- end }}
               {{- if .name }}
-              --name={{ .name }}
+              --name={{ include "myriad-node.fullname" $ }}-{{ .name }}
               {{- end }}
               {{- if .archive }}
               --pruning=archive
