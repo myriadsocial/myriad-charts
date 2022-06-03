@@ -81,6 +81,20 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-db-0.0.1/myriad-db-0.0.1.tgz
     version: 0.0.1
+  myriad-federated:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-06-03T07:56:41.658158888Z"
+    description: A Helm chart for Kubernetes
+    digest: 86d281bb7ce2edfc13655d97db69e4d76eb7e0802588480ec6c97e81778c39a3
+    maintainers:
+    - email: myriad.dev@blocksphere.id
+      name: myriadsocial
+    name: myriad-federated
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-federated-1.0.0/myriad-federated-1.0.0.tgz
+    version: 1.0.0
   myriad-node:
   - apiVersion: v2
     appVersion: 2.0.0
@@ -161,4 +175,4 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-0.0.1/myriad-web-0.0.1.tgz
     version: 0.0.1
-generated: "2022-04-12T05:14:51.63346234Z"
+generated: "2022-06-03T07:56:41.662886817Z"
