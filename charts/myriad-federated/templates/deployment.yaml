@@ -47,9 +47,18 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            {{- if .Values.config.websiteURL }}
+            - name: MYRIAD_WEBSITE_URL
+              value: {{ .Values.config.websiteURL }}
+            {{- end }}
+            {{- if .Values.config.rpcURL }}
+            - name: MYRIAD_RPC_URL
+              value: {{ .Values.config.rpcURL }}
+            {{- end }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
               protocol: TCP
           {{- if .Values.config.startupProbe.path }}
           startupProbe:
