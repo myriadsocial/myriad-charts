@@ -22,6 +22,8 @@ config:
   websiteURL: ""
   supportMail: ""
   apiURL: ""
+  near:
+    tippingContractAddress: ""
   firebase:
     projectId: ""
     apiKey: ""
