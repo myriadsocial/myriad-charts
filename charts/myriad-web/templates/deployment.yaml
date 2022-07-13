@@ -69,6 +69,8 @@ spec:
               value: {{ .Values.config.supportMail }}
             - name: MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
+            - name: NEAR_TIPPING_CONTRACT_ID
+              value: {{ .Values.config.near.tippingContractAddress }}
             {{- if and (and (and .Values.config.firebase.apiKey .Values.config.firebase.projectId) (and .Values.config.firebase.messagingSenderId .Values.config.firebase.appId)) .Values.config.firebase.measurementId .Values.config.firebase.storageBucket }}
             - name: NEXT_PUBLIC_FIREBASE_API_KEY
               valueFrom:
