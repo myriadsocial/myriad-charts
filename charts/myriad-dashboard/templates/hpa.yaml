@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "myriad-cms.fullname" . }}
+  name: {{ include "myriad-dashboard.fullname" . }}
   labels:
-    {{- include "myriad-cms.labels" . | nindent 4 }}
+    {{- include "myriad-dashboard.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "myriad-cms.fullname" . }}
+    name: {{ include "myriad-dashboard.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

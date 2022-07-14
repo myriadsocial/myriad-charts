@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "myriad-cms.fullname" . }}
+  name: {{ include "myriad-dashboard.fullname" . }}
   labels:
-    {{- include "myriad-cms.labels" . | nindent 4 }}
+    {{- include "myriad-dashboard.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "myriad-cms.selectorLabels" . | nindent 6 }}
+      {{- include "myriad-dashboard.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "myriad-cms.selectorLabels" . | nindent 8 }}
+        {{- include "myriad-dashboard.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "myriad-cms.serviceAccountName" . }}
+      serviceAccountName: {{ include "myriad-dashboard.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       {{- with .Values.nodeSelector }}
@@ -68,21 +68,21 @@ spec:
             - name: REACT_APP_MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-cms.apiKeySecretName" . }}
+                  name: {{ include "myriad-dashboard.apiKeySecretName" . }}
                   key: apiKey
             {{- end }}
             {{- if .Values.config.admin.email }}
             - name: REACT_APP_MYRIAD_ADMIN_EMAIL
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-cms.adminSecretName" . }}
+                  name: {{ include "myriad-dashboard.adminSecretName" . }}
                   key: email
             {{- end }}
             {{- if .Values.config.admin.password }}
             - name: REACT_APP_MYRIAD_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-cms.adminSecretName" . }}
+                  name: {{ include "myriad-dashboard.adminSecretName" . }}
                   key: password
             {{- end }}
           ports:
