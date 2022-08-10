@@ -64,13 +64,6 @@ Create the name of the service account to use
 {{/*
 Create the name of Api Key secret.
 */}}
-{{- define "myriad-dashboard.apiKeySecretName" -}}
-{{- printf "%s-%s" (include "myriad-dashboard.fullname" .) "api-key" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
-{{/*
-Create the name of Admin Auth secret.
-*/}}
-{{- define "myriad-dashboard.adminSecretName" -}}
-{{- printf "%s-%s" (include "myriad-dashboard.fullname" .) "admin-auth" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-dashboard.apiSecretName" -}}
+{{- printf "%s-%s" (include "myriad-dashboard.fullname" .) "api" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}

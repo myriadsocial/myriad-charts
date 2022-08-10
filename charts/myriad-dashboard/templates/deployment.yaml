@@ -48,48 +48,19 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- if .Values.config.websiteURL }}
-            - name: REACT_APP_MYRIAD_WEBSITE_URL
-              value: "{{ .Values.config.websiteURL }}"
-            {{- end }}
-            {{- if .Values.config.supportMail }}
-            - name: REACT_APP_MYRIAD_SUPPORT_MAIL
-              value: "{{ .Values.config.supportMail }}"
-            {{- end }}
-            {{- if .Values.config.webURL }}
-            - name: REACT_APP_MYRIAD_WEB_URL
-              value: "{{ .Values.config.webURL }}"
-            {{- end }}
-            {{- if .Values.config.apiURL }}
-            - name: REACT_APP_MYRIAD_API_URL
-              value: "{{ .Values.config.apiURL }}"
-            {{- end }}
+            - name: MYRIAD_API_URL
+              value: {{ .Values.config.apiURL }}
             {{- if .Values.config.apiKey }}
-            - name: REACT_APP_MYRIAD_API_KEY
+            - name: MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-dashboard.apiKeySecretName" . }}
-                  key: apiKey
-            {{- end }}
-            {{- if .Values.config.admin.email }}
-            - name: REACT_APP_MYRIAD_ADMIN_EMAIL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-dashboard.adminSecretName" . }}
-                  key: email
-            {{- end }}
-            {{- if .Values.config.admin.password }}
-            - name: REACT_APP_MYRIAD_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-dashboard.adminSecretName" . }}
-                  key: password
+                  name: {{ include "myriad-dashboard.apiSecretName" . }}
+                  key: key
             {{- end }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
               protocol: TCP
-          {{- if .Values.config.startupProbe.path }}
           startupProbe:
             httpGet:
               path: /api/healthcheck
@@ -99,8 +70,6 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 30
             successThreshold: 1
-          {{- end }}
-          {{- if .Values.config.livenessProbe.path }}
           livenessProbe:
             httpGet:
               path: /api/healthcheck
@@ -110,8 +79,6 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 6
             successThreshold: 1
-          {{- end }}
-          {{- if .Values.config.readinessProbe.path }}
           readinessProbe:
             httpGet:
               path: /api/healthcheck
@@ -121,4 +88,3 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 6
             successThreshold: 1
-          {{- end }}
