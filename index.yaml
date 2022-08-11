@@ -69,6 +69,19 @@ entries:
     version: 0.0.1
   myriad-dashboard:
   - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2022-08-11T04:01:49.416869879Z"
+    description: A Helm chart for Kubernetes
+    digest: 50c811e1e3d12b102a823bfa597dcf9f716a2690fcea6dac185b84a536e7c05d
+    maintainers:
+    - email: myriad.dev@blocksphere.id
+      name: myriadsocial
+    name: myriad-dashboard
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-dashboard-1.0.1/myriad-dashboard-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2022-07-14T10:43:51.520424522Z"
     description: A Helm chart for Kubernetes
@@ -202,4 +215,4 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-0.0.1/myriad-web-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-14T10:43:51.520447322Z"
+generated: "2022-08-11T04:01:49.417119682Z"
