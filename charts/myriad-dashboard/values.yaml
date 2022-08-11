@@ -14,22 +14,8 @@ image:
 imagePullSecrets: []
 
 config:
-  host: ""
-  port: 3000
-  websiteURL: ""
-  supportMail: ""
-  webURL: ""
   apiURL: ""
   apiKey: ""
-  admin:
-    email: ""
-    password: ""
-  startupProbe:
-    path: ""
-  livenessProbe:
-    path: ""
-  readinessProbe:
-    path: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -42,12 +28,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 1001
+podSecurityContext:
+  fsGroup: 1001
 
-securityContext: {}
-  # runAsNonRoot: true
-  # runAsUser: 1001
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
 
 service:
   type: ClusterIP
@@ -76,8 +62,8 @@ resources: {}
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
+  #   cpu: 300m
+  #   memory: 256Mi
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
