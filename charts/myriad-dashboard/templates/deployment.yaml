@@ -48,10 +48,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: MYRIAD_API_URL
+            - name: NEXT_PUBLIC_MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
             {{- if .Values.config.apiKey }}
-            - name: MYRIAD_API_KEY
+            - name: NEXT_PUBLIC_MYRIAD_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ include "myriad-dashboard.apiSecretName" . }}
