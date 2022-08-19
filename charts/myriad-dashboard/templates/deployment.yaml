@@ -48,7 +48,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: NEXTAUTH_URL
+            - name: NEXT_PUBLIC_APP_AUTH_URL
               value: {{ .Values.config.appAuthURL }}
             - name: NEXT_PUBLIC_MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
