@@ -60,3 +60,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of sentry secret.
+*/}}
+{{- define "myriad-federated.sentrySecretName" -}}
+{{- printf "%s-%s" (include "myriad-federated.fullname" .) "sentry" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
