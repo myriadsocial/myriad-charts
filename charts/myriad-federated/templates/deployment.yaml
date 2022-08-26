@@ -48,13 +48,48 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            {{- if .Values.config.app.environment }}
+            - name: NEXT_PUBLIC_APP_ENVIRONMENT
+              value: {{ .Values.config.app.environment }}
+            {{- end }}
+            {{- if .Values.config.app.name }}
+            - name: NEXT_PUBLIC_APP_NAME
+              value: {{ .Values.config.app.name }}
+            {{- end }}
+            {{- if .Values.config.app.version }}
+            - name: NEXT_PUBLIC_APP_VERSION
+              value: {{ .Values.config.app.version }}
+            {{- end }}
+            {{- if .Values.config.app.authURL }}
+            - name: NEXT_PUBLIC_APP_AUTH_URL
+              value: {{ .Values.config.app.authURL }}
+            {{- end }}
             {{- if .Values.config.websiteURL }}
-            - name: MYRIAD_WEBSITE_URL
+            - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
               value: {{ .Values.config.websiteURL }}
             {{- end }}
+            {{- if .Values.config.supportMail }}
+            - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
+              value: {{ .Values.config.supportMail }}
+            {{- end }}
             {{- if .Values.config.rpcURL }}
-            - name: MYRIAD_RPC_URL
+            - name: NEXT_PUBLIC_MYRIAD_RPC_URL
               value: {{ .Values.config.rpcURL }}
+            {{- end }}
+            {{- if .Values.config.apiURL }}
+            - name: NEXT_PUBLIC_MYRIAD_API_URL
+              value: {{ .Values.config.apiURL }}
+            {{- end }}
+            {{- if .Values.config.apiKey }}
+            - name: NEXT_PUBLIC_MYRIAD_API_KEY
+              value: {{ .Values.config.apiKey }}
+            {{- end }}
+            {{- if .Values.config.sentryDSN }}
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-federated.sentrySecretName" . }}
+                  key: dsn
             {{- end }}
           ports:
             - name: http

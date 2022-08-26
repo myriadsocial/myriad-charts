@@ -14,8 +14,17 @@ image:
 imagePullSecrets: []
 
 config:
+  app:
+    environment: ""
+    name: ""
+    version: ""
+    authURL: ""
   websiteURL: ""
+  supportMail: ""
   rpcURL: ""
+  apiURL: ""
+  apiKey: ""
+  sentryDSN: ""
   startupProbe:
     path: ""
   livenessProbe:
