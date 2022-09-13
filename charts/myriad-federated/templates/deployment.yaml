@@ -64,6 +64,13 @@ spec:
             - name: NEXT_PUBLIC_APP_AUTH_URL
               value: {{ .Values.config.app.authURL }}
             {{- end }}
+            {{- if .Values.config.app.secret }}
+            - name: APP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-federated.appSecretName" . }}
+                  key: secret
+            {{- end }}
             {{- if .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
               value: {{ .Values.config.websiteURL }}
@@ -76,20 +83,9 @@ spec:
             - name: NEXT_PUBLIC_MYRIAD_RPC_URL
               value: {{ .Values.config.rpcURL }}
             {{- end }}
-            {{- if .Values.config.apiURL }}
-            - name: NEXT_PUBLIC_MYRIAD_API_URL
-              value: {{ .Values.config.apiURL }}
-            {{- end }}
-            {{- if .Values.config.apiKey }}
-            - name: NEXT_PUBLIC_MYRIAD_API_KEY
-              value: {{ .Values.config.apiKey }}
-            {{- end }}
-            {{- if .Values.config.sentryDSN }}
-            - name: SENTRY_DSN
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-federated.sentrySecretName" . }}
-                  key: dsn
+            {{- if .Values.config.sentry.dsn }}
+            - name: NEXT_PUBLIC_SENTRY_DSN
+              value: {{ .Values.config.sentry.dsn }}
             {{- end }}
           ports:
             - name: http
