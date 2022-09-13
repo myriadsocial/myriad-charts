@@ -31,10 +31,9 @@ Starting with Myriad.Social, we are creating a platform where social app, metave
 ## Chart Sources
 
 * `charts/myriad-node`: Myriad Node Chart
-* `charts/myriad-db`  : Myriad DB Chart
 * `charts/myriad-api` : Myriad API Chart
-* `charts/myriad-web` : Myriad WebApp Chart
-* `charts/myriad-dashboard` : Myriad Dashboard Chart
+* `charts/myriad-web` : Myriad Web App Chart
+* `charts/myriad-federated` : Myriad Web Federated Chart
 
 ## Usage
 

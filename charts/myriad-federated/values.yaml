@@ -19,12 +19,12 @@ config:
     name: ""
     version: ""
     authURL: ""
+    secret: ""
   websiteURL: ""
   supportMail: ""
   rpcURL: ""
-  apiURL: ""
-  apiKey: ""
-  sentryDSN: ""
+  sentry:
+    dsn: ""
   startupProbe:
     path: ""
   livenessProbe:

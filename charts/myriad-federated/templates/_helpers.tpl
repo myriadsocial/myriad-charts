@@ -62,8 +62,8 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of sentry secret.
+Create the name of app secret.
 */}}
-{{- define "myriad-federated.sentrySecretName" -}}
-{{- printf "%s-%s" (include "myriad-federated.fullname" .) "sentry" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-federated.appSecretName" -}}
+{{- printf "%s-%s" (include "myriad-federated.fullname" .) "app" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
