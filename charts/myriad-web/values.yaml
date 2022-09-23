@@ -21,6 +21,7 @@ config:
   appSecret: ""
   websiteURL: ""
   supportMail: ""
+  rpcURL: ""
   apiURL: ""
   near:
     tippingContractAddress: ""

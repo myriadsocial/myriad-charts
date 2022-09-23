@@ -67,6 +67,8 @@ spec:
               value: {{ .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
               value: {{ .Values.config.supportMail }}
+            - name: NEXT_PUBLIC_MYRIAD_RPC_URL
+              value: {{ .Values.config.rpcURL }}
             - name: MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
             - name: NEAR_TIPPING_CONTRACT_ID
