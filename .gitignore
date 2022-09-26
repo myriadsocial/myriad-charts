@@ -13,11 +13,12 @@ pids
 .AppleDouble
 .LSOverride
 
-# dotenv environment variables file
-.env
+# IDE
+.idea
+.vscode
 
-# misc
-*.pem
-
-# Helm chart automated files
+# Build
 /charts/*/charts
+
+# Environment File
+.env

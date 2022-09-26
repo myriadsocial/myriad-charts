@@ -1,0 +1,47 @@
+name: Tester
+
+on:
+  pull_request:
+    branches:
+      - main
+      - releases/**
+
+concurrency:
+  group: tester-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  test-code:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.9.4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: Set up Chart Testing
+        uses: helm/chart-testing-action@v2.3.0
+        with:
+          version: v3.4.0
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          if [[ -n "$changed" ]]; then
+            echo "::set-output name=changed::true"
+          fi
+      - name: Run chart-testing (lint)
+        run: ct lint --target-branch ${{ github.event.repository.default_branch }}
+      - name: Create kind cluster
+        if: steps.list-changed.outputs.changed == 'true'
+        uses: helm/kind-action@v1.4.0
+      - name: Run chart-testing (install)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: ct install
