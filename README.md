@@ -3,17 +3,15 @@
 </div>
 <br>
 <br>
-
 <div align="Center">
 <h1>Myriad Charts</h1>
 <h2>It's Your Turn to Own Your Web</h2>
-Starting with Myriad.Social, we are creating a platform where social app, metaverse and messenger seamlessly integrate, together and with further applications. As a user, a content creator or a builder, Myriad is designed to be yours.
+<p>Starting with Myriad.Social, we are creating a platform where social app, metaverse and messenger seamlessly integrate, together and with further applications. As a user, a content creator or a builder, Myriad is designed to be yours.</p>
 <br>
 <br>
 
 [![Medium](https://img.shields.io/badge/Medium-Myriad-brightgreen?logo=medium)](https://medium.com/@myriadsocial.blog)
-[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/tester.yml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/tester.yml)
-[![](https://github.com/myriadsocial/myriad-charts/actions/workflows/releaser.yml/badge.svg?branch=main)](https://github.com/myriadsocial/myriad-charts/actions/workflows/releaser.yml)
+
 </div>
 
 ---
@@ -30,10 +28,11 @@ Starting with Myriad.Social, we are creating a platform where social app, metave
 
 ## Chart Sources
 
-* `charts/myriad-node`: Myriad Node Chart
-* `charts/myriad-api` : Myriad API Chart
-* `charts/myriad-web` : Myriad Web App Chart
-* `charts/myriad-federated` : Myriad Web Federated Chart
+* `charts/myriad-node`: [Myriad Node Chart](./charts/myriad-node)
+* `charts/myriad-api` : [Myriad API Chart](./charts/myriad-api)
+* `charts/myriad-web` : [Myriad Web App Chart](./charts/myriad-web)
+* `charts/myriad-federated` : [Myriad Web Federated Chart](./charts/myriad-federated)
+* `charts/myriad-app-deployer` : [Myriad App Deployer](./charts/myriad-app-deployer)
 
 ## Usage
 
