@@ -148,6 +148,29 @@ spec:
                   name: {{ include "myriad-api.redisSecretName" . }}
                   key: password
             {{- end }}
+            {{- if .Values.config.smtp.server }}
+            - name: SMTP_SERVER
+              value: {{ .Values.config.smtp.server }}
+            {{- end }}
+            {{- if .Values.config.smtp.port }}
+            - name: SMTP_PORT
+              value: {{ .Values.config.smtp.port | quote }}
+            {{- end }}
+            {{- if .Values.config.smtp.username }}
+            - name: SMTP_USERNAME
+              value: {{ .Values.config.smtp.username }}
+            {{- end }}
+            {{- if .Values.config.smtp.password }}
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "myriad-api.smtpSecretName" . }}
+                  key: password
+            {{- end }}
+            {{- if .Values.config.smtp.senderAddress }}
+            - name: SMTP_SENDER_ADDRESS
+              value: {{ .Values.config.smtp.senderAddress }}
+            {{- end }}
             {{- if .Values.config.firebase.serviceAccountBase64 }}
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /etc/google/sa_credentials.json

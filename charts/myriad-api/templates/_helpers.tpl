@@ -97,6 +97,13 @@ Create the name of redis secret.
 {{- end }}
 
 {{/*
+Create the name of smtp secret.
+*/}}
+{{- define "myriad-api.smtpSecretName" -}}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "smtp" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
 Create the name of firebase secret.
 */}}
 {{- define "myriad-api.firebaseSecretName" -}}
