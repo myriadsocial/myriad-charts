@@ -19,6 +19,7 @@ config:
   adminMnemonic: ""
   faucetMnemonic: ""
   faucetAmount: 0
+  webAppURL: ""
   jwt:
     tokenSecretKey: ""
     tokenExpireIn: 3600
@@ -37,6 +38,12 @@ config:
     host: ""
     port: ""
     password: ""
+  smtp:
+    server: ""
+    port: 587
+    username: ""
+    password: ""
+    senderAddress: ""
   firebase:
     serviceAccountBase64: ""
     storageBucket: ""
