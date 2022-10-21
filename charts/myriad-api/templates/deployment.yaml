@@ -81,6 +81,10 @@ spec:
             {{- end }}
             - name: MYRIAD_FAUCET_AMOUNT
               value: {{ .Values.config.faucetAmount | quote }}
+            {{- if .Values.config.webAppURL }}
+            - name: MYRIAD_WEB_APP_URL
+              value: {{ .Values.config.webAppURL }}
+            {{- end }}
             {{- if and .Values.config.jwt.tokenSecretKey .Values.config.jwt.refreshTokenSecretKey }}
             - name: JWT_TOKEN_SECRET_KEY
               valueFrom:
