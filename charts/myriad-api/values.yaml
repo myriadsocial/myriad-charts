@@ -14,12 +14,9 @@ image:
 imagePullSecrets: []
 
 config:
-  rpcWSURL: ""
-  serverId: ""
-  adminMnemonic: ""
-  faucetMnemonic: ""
-  faucetAmount: 0
-  webAppURL: ""
+  domain: ""
+  adminSubstrateMnemonic: ""
+  adminNearMnemonic: ""
   jwt:
     tokenSecretKey: ""
     tokenExpireIn: 3600
