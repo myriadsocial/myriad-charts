@@ -57,33 +57,23 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- if .Values.config.rpcWSURL }}
-            - name: MYRIAD_RPC_WS_URL
-              value: {{ .Values.config.rpcWSURL }}
+            {{- if .Values.config.domain }}
+            - name: DOMAIN
+              value: {{ .Values.config.domain }}
             {{- end }}
-            {{- if .Values.config.serverId }}
-            - name: MYRIAD_SERVER_ID
-              value: {{ .Values.config.serverId }}
-            {{- end }}
-            {{- if .Values.config.adminMnemonic }}
-            - name: MYRIAD_ADMIN_MNEMONIC
+            {{- if .Values.config.adminSubstrateMnemonic }}
+            - name: MYRIAD_ADMIN_SUBSTRATE_MNEMONIC
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-api.adminSecretName" . }}
+                  name: {{ include "myriad-api.adminSubstrateSecretName" . }}
                   key: mnemonic
             {{- end }}
-            {{- if .Values.config.faucetMnemonic }}
-            - name: MYRIAD_FAUCET_MNEMONIC
+            {{- if .Values.config.adminNearMnemonic }}
+            - name: MYRIAD_ADMIN_NEAR_MNEMONIC
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "myriad-api.faucetSecretName" . }}
+                  name: {{ include "myriad-api.adminNearSecretName" . }}
                   key: mnemonic
-            {{- end }}
-            - name: MYRIAD_FAUCET_AMOUNT
-              value: {{ .Values.config.faucetAmount | quote }}
-            {{- if .Values.config.webAppURL }}
-            - name: MYRIAD_WEB_APP_URL
-              value: {{ .Values.config.webAppURL }}
             {{- end }}
             {{- if and .Values.config.jwt.tokenSecretKey .Values.config.jwt.refreshTokenSecretKey }}
             - name: JWT_TOKEN_SECRET_KEY

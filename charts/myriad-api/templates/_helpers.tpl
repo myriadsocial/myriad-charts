@@ -62,17 +62,17 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of faucet secret.
+Create the name of admin substrate secret.
 */}}
-{{- define "myriad-api.faucetSecretName" -}}
-{{- printf "%s-%s" (include "myriad-api.fullname" .) "faucet" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-api.adminSubstrateSecretName" -}}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminSubstrate" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
-Create the name of admin secret.
+Create the name of admin near secret.
 */}}
-{{- define "myriad-api.adminSecretName" -}}
-{{- printf "%s-%s" (include "myriad-api.fullname" .) "admin" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- define "myriad-api.adminNearSecretName" -}}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminNear" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
