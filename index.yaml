@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   myriad-api:
   - apiVersion: v2
+    appVersion: 2.3.1
+    created: "2023-02-23T07:20:43.060875567Z"
+    description: A Helm chart for Kubernetes
+    digest: cbde9339c83831491534e0a14f2fe3d3dfe2b49508d0f432311d7fd4832da3fe
+    maintainers:
+    - email: dev@myriad.social
+      name: myriadsocial
+    name: myriad-api
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-api-2.3.1/myriad-api-2.3.1.tgz
+    version: 2.3.1
+  - apiVersion: v2
     appVersion: 2.3.0
     created: "2023-02-22T23:45:28.588483843Z"
     description: A Helm chart for Kubernetes
@@ -306,4 +319,4 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-0.0.1/myriad-web-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-22T23:45:28.588522743Z"
+generated: "2023-02-23T07:20:43.060969966Z"
