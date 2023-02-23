@@ -65,14 +65,14 @@ Create the name of the service account to use
 Create the name of admin substrate secret.
 */}}
 {{- define "myriad-api.adminSubstrateSecretName" -}}
-{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminSubstrate" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminsubstrate" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Create the name of admin near secret.
 */}}
 {{- define "myriad-api.adminNearSecretName" -}}
-{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminNear" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-%s" (include "myriad-api.fullname" .) "adminnear" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
