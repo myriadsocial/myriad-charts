@@ -84,7 +84,7 @@ spec:
               value: {{ .Values.config.rpcURL }}
             {{- end }}
             {{- if .Values.config.apiURL }}
-            - name: MYRIAD_API_URL
+            - name: NEXT_PUBLIC_MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
             {{- end }}
             {{- if .Values.config.near.tippingContractAddress }}
