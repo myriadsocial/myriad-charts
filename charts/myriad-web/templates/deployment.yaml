@@ -54,19 +54,19 @@ spec:
               value: {{ .Values.config.appName }}
             - name: NEXT_PUBLIC_APP_VERSION
               value: {{ .Values.config.appVersion }}
-            - name: NEXTAUTH_URL
+            - name: NEXT_PUBLIC_APP_AUTH_URL
               value: {{ .Values.config.appAuthURL }}
             {{- if .Values.config.appSecret }}
-            - name: SECRET
+            - name: APP_SECRET
               valueFrom:
                 secretKeyRef:
                   name: {{ include "myriad-web.appSecretName" . }}
                   key: secret
             {{- end }}
-            - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
-              value: {{ .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
               value: {{ .Values.config.supportMail }}
+            - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
+              value: {{ .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_RPC_URL
               value: {{ .Values.config.rpcURL }}
             - name: MYRIAD_API_URL
@@ -106,18 +106,11 @@ spec:
                   key: measurementId
             {{- end }}
             {{- if .Values.config.sentry.dsn }}
-            - name: SENTRY_DSN
+            - name: NEXT_PUBLIC_SENTRY_DSN
               valueFrom:
                 secretKeyRef:
                   name: {{ include "myriad-web.sentrySecretName" . }}
                   key: dsn
-            {{- end }}
-            {{- if .Values.config.facebook.appId }}
-            - name: NEXT_PUBLIC_FACEBOOK_APP_ID
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-web.facebookSecretName" . }}
-                  key: appId
             {{- end }}
           ports:
             - name: http

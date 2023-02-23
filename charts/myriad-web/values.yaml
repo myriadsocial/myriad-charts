@@ -19,8 +19,8 @@ config:
   appVersion: ""
   appAuthURL: ""
   appSecret: ""
-  websiteURL: ""
   supportMail: ""
+  websiteURL: ""
   rpcURL: ""
   apiURL: ""
   near:
@@ -34,8 +34,6 @@ config:
     measurementId: ""
   sentry:
     dsn: ""
-  facebook:
-    appId: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
