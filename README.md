@@ -1,12 +1,12 @@
 <div align="center">
 <img src="https://avatars.githubusercontent.com/u/80524516?s=200&v=4">
 </div>
-<br>
-<br>
+
 <div align="Center">
 <h1>Myriad Charts</h1>
 <h2>It's Your Turn to Own Your Web</h2>
-<p>Starting with Myriad.Social, we are creating a platform where social app, metaverse and messenger seamlessly integrate, together and with further applications. As a user, a content creator or a builder, Myriad is designed to be yours.</p>
+Starting with Myriad.Social, we are creating a platform where social app, metaverse and messenger seamlessly integrate, together and with further applications. As a user, a content creator or a builder, Myriad is designed to be yours.
+
 <br>
 <br>
 
@@ -32,7 +32,6 @@
 * `charts/myriad-api` : [Myriad API Chart](./charts/myriad-api)
 * `charts/myriad-web` : [Myriad Web App Chart](./charts/myriad-web)
 * `charts/myriad-federated` : [Myriad Web Federated Chart](./charts/myriad-federated)
-* `charts/myriad-app-deployer` : [Myriad App Deployer](./charts/myriad-app-deployer)
 
 ## Usage
 

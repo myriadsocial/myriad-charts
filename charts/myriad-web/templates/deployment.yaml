@@ -48,31 +48,49 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            {{- if .Values.config.app.environment }}
             - name: NEXT_PUBLIC_APP_ENVIRONMENT
-              value: {{ .Values.config.appEnvironment }}
+              value: {{ .Values.config.app.environment }}
+            {{- end }}
+            {{- if .Values.config.app.name }}
             - name: NEXT_PUBLIC_APP_NAME
-              value: {{ .Values.config.appName }}
+              value: {{ .Values.config.app.name }}
+            {{- end }}
+            {{- if .Values.config.app.version }}
             - name: NEXT_PUBLIC_APP_VERSION
-              value: {{ .Values.config.appVersion }}
+              value: {{ .Values.config.app.version }}
+            {{- end }}
+            {{- if .Values.config.app.authURL }}
             - name: NEXT_PUBLIC_APP_AUTH_URL
-              value: {{ .Values.config.appAuthURL }}
-            {{- if .Values.config.appSecret }}
+              value: {{ .Values.config.app.authURL }}
+            {{- end }}
+            {{- if .Values.config.app.secret }}
             - name: APP_SECRET
               valueFrom:
                 secretKeyRef:
                   name: {{ include "myriad-web.appSecretName" . }}
                   key: secret
             {{- end }}
+            {{- if .Values.config.supportMail }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
               value: {{ .Values.config.supportMail }}
+            {{- end }}
+            {{- if .Values.config.websiteURL }}
             - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
               value: {{ .Values.config.websiteURL }}
+            {{- end }}
+            {{- if .Values.config.rpcURL }}
             - name: NEXT_PUBLIC_MYRIAD_RPC_URL
               value: {{ .Values.config.rpcURL }}
+            {{- end }}
+            {{- if .Values.config.apiURL }}
             - name: MYRIAD_API_URL
               value: {{ .Values.config.apiURL }}
+            {{- end }}
+            {{- if .Values.config.near.tippingContractAddress }}
             - name: NEAR_TIPPING_CONTRACT_ID
               value: {{ .Values.config.near.tippingContractAddress }}
+            {{- end }}
             {{- if and (and (and .Values.config.firebase.apiKey .Values.config.firebase.projectId) (and .Values.config.firebase.messagingSenderId .Values.config.firebase.appId)) .Values.config.firebase.measurementId .Values.config.firebase.storageBucket }}
             - name: NEXT_PUBLIC_FIREBASE_API_KEY
               valueFrom:
@@ -107,10 +125,7 @@ spec:
             {{- end }}
             {{- if .Values.config.sentry.dsn }}
             - name: NEXT_PUBLIC_SENTRY_DSN
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-web.sentrySecretName" . }}
-                  key: dsn
+              value: {{ .Values.config.sentry.dsn }}
             {{- end }}
           ports:
             - name: http
