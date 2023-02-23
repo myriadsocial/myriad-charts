@@ -71,13 +71,13 @@ spec:
                   name: {{ include "myriad-federated.appSecretName" . }}
                   key: secret
             {{- end }}
-            {{- if .Values.config.websiteURL }}
-            - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
-              value: {{ .Values.config.websiteURL }}
-            {{- end }}
             {{- if .Values.config.supportMail }}
             - name: NEXT_PUBLIC_MYRIAD_SUPPORT_MAIL
               value: {{ .Values.config.supportMail }}
+            {{- end }}
+            {{- if .Values.config.websiteURL }}
+            - name: NEXT_PUBLIC_MYRIAD_WEBSITE_URL
+              value: {{ .Values.config.websiteURL }}
             {{- end }}
             {{- if .Values.config.rpcURL }}
             - name: NEXT_PUBLIC_MYRIAD_RPC_URL
@@ -94,7 +94,7 @@ spec:
           {{- if .Values.config.startupProbe.path }}
           startupProbe:
             httpGet:
-              path: /api/healthcheck
+              path: {{ .Values.config.startupProbe.path }}
               port: http
             initialDelaySeconds: 5
             periodSeconds: 10
@@ -105,7 +105,7 @@ spec:
           {{- if .Values.config.livenessProbe.path }}
           livenessProbe:
             httpGet:
-              path: /api/healthcheck
+              path: {{ .Values.config.livenessProbe.path }}
               port: http
             initialDelaySeconds: 30
             periodSeconds: 10
@@ -116,7 +116,7 @@ spec:
           {{- if .Values.config.readinessProbe.path }}
           readinessProbe:
             httpGet:
-              path: /api/healthcheck
+              path: {{ .Values.config.readinessProbe.path }}
               port: http
             initialDelaySeconds: 5
             periodSeconds: 10

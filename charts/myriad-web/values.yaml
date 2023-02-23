@@ -14,11 +14,12 @@ image:
 imagePullSecrets: []
 
 config:
-  appEnvironment: ""
-  appName: ""
-  appVersion: ""
-  appAuthURL: ""
-  appSecret: ""
+  app:
+    environment: ""
+    name: ""
+    version: ""
+    authURL: ""
+    secret: ""
   supportMail: ""
   websiteURL: ""
   rpcURL: ""
