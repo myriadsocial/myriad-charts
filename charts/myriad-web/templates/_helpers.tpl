@@ -81,10 +81,3 @@ Create the name of sentry secret.
 {{- define "myriad-web.sentrySecretName" -}}
 {{- printf "%s-%s" (include "myriad-web.fullname" .) "sentry" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
-
-{{/*
-Create the name of facebook secret.
-*/}}
-{{- define "myriad-web.facebookSecretName" -}}
-{{- printf "%s-%s" (include "myriad-web.fullname" .) "facebook" | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
