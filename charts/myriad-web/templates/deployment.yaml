@@ -61,7 +61,7 @@ spec:
               value: {{ .Values.config.app.version }}
             {{- end }}
             {{- if .Values.config.app.authURL }}
-            - name: NEXT_PUBLIC_APP_AUTH_URL
+            - name: NEXTAUTH_URL
               value: {{ .Values.config.app.authURL }}
             {{- end }}
             {{- if .Values.config.app.secret }}
