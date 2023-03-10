@@ -91,7 +91,7 @@ spec:
             - name: NEAR_TIPPING_CONTRACT_ID
               value: {{ .Values.config.near.tippingContractAddress }}
             {{- end }}
-            {{- if and (and (and .Values.config.firebase.apiKey .Values.config.firebase.projectId) (and .Values.config.firebase.messagingSenderId .Values.config.firebase.appId)) .Values.config.firebase.measurementId .Values.config.firebase.storageBucket }}
+            {{- if and (and (and .Values.config.firebase.apiKey .Values.config.firebase.projectId) (and .Values.config.firebase.messagingSenderId .Values.config.firebase.appId)) .Values.config.firebase.measurementId }}
             - name: NEXT_PUBLIC_FIREBASE_API_KEY
               valueFrom:
                 secretKeyRef:
@@ -107,11 +107,6 @@ spec:
                 secretKeyRef:
                   name: {{ include "myriad-web.firebaseSecretName" . }}
                   key: messagingSenderId
-            - name: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myriad-web.firebaseSecretName" . }}
-                  key: storageBucket
             - name: NEXT_PUBLIC_FIREBASE_APP_ID
               valueFrom:
                 secretKeyRef:
