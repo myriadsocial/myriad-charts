@@ -5,11 +5,16 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 concurrency:
   group: releaser
 
 jobs:
   release:
+    permissions:
+      contents: write
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Repository
