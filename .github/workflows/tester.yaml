@@ -25,10 +25,6 @@ jobs:
           version: v3.12.1
       - name: Set up Python
         uses: actions/setup-python@v4
-        with:
-          python-version: 3.10
-          check-latest: true
-          architecture: x86
       - name: Set up Chart Testing
         uses: helm/chart-testing-action@v2.6.0
       - name: Run chart-testing (list-changed)
