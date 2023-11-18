@@ -14,14 +14,18 @@ image:
 imagePullSecrets: []
 
 config:
+  secretsStore:
+    enabled: false
+    providerClass: ""
+    name: ""
   app:
     environment: ""
     name: ""
     version: ""
     authURL: ""
     secret: ""
-  websiteURL: ""
   supportMail: ""
+  websiteURL: ""
   rpcURL: ""
   sentry:
     dsn: ""
