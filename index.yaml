@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   myriad-api:
   - apiVersion: v2
+    appVersion: 2.4.0
+    created: "2023-11-18T15:51:10.870715888Z"
+    description: A Helm chart for Kubernetes
+    digest: 0ee50bb6a435fe74723529d485839d82006c0e16e43dc0cb4872d33372b33dd3
+    maintainers:
+    - email: devops@myriad.social
+      name: myriadsocial
+    name: myriad-api
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-api-2.4.0/myriad-api-2.4.0.tgz
+    version: 2.4.0
+  - apiVersion: v2
     appVersion: 2.3.4
     created: "2023-11-09T11:13:46.711949974Z"
     description: A Helm chart for Kubernetes
@@ -201,6 +214,19 @@ entries:
     version: 0.0.1
   myriad-federated:
   - apiVersion: v2
+    appVersion: 2.4.0
+    created: "2023-11-18T15:51:10.988485895Z"
+    description: A Helm chart for Kubernetes
+    digest: 2018ceda4e10332ed506b75f5aaa79ba24d3eb5f1500637228430da8b7a904c9
+    maintainers:
+    - email: devops@myriad.social
+      name: myriadsocial
+    name: myriad-federated
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-federated-2.4.0/myriad-federated-2.4.0.tgz
+    version: 2.4.0
+  - apiVersion: v2
     appVersion: 1.0.4
     created: "2023-11-09T11:13:46.852550069Z"
     description: A Helm chart for Kubernetes
@@ -333,6 +359,19 @@ entries:
     version: 0.0.1
   myriad-web:
   - apiVersion: v2
+    appVersion: 2.4.0
+    created: "2023-11-18T15:51:11.111058815Z"
+    description: A Helm chart for Kubernetes
+    digest: 8234100540729a00ff857dcf3cf61da8f68bdfebc15b72a5ae8d018283a5d0fb
+    maintainers:
+    - email: devops@myriad.social
+      name: myriadsocial
+    name: myriad-web
+    type: application
+    urls:
+    - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-2.4.0/myriad-web-2.4.0.tgz
+    version: 2.4.0
+  - apiVersion: v2
     appVersion: 2.3.6
     created: "2023-11-09T11:13:47.112344618Z"
     description: A Helm chart for Kubernetes
@@ -462,4 +501,4 @@ entries:
     urls:
     - https://github.com/myriadsocial/myriad-charts/releases/download/myriad-web-0.0.1/myriad-web-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-09T11:13:47.112448021Z"
+generated: "2023-11-18T15:51:11.111180442Z"
