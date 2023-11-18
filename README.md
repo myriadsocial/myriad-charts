@@ -16,19 +16,8 @@ Starting with Myriad.Social, we are creating a platform where social app, metave
 
 ---
 
-## Actions
-
-* [@helm/kind-action](https://github.com/helm/kind-action)
-* [@helm/chart-testing-action](https://github.com/helm/chart-testing-action)
-* [@helm/chart-releaser-action](https://github.com/helm/chart-releaser-action)
-
-## Project Status
-
-`main` supports Helm 3 only, i. e. both `v1` and `v2` [API version](https://helm.sh/docs/topics/charts/#the-apiversion-field) charts are installable.
-
 ## Chart Sources
 
-* `charts/myriad-node`: [Myriad Node Chart](./charts/myriad-node)
 * `charts/myriad-api` : [Myriad API Chart](./charts/myriad-api)
 * `charts/myriad-web` : [Myriad Web App Chart](./charts/myriad-web)
 * `charts/myriad-federated` : [Myriad Web Federated Chart](./charts/myriad-federated)
@@ -38,5 +27,5 @@ Starting with Myriad.Social, we are creating a platform where social app, metave
 ```bash
 helm repo add myriadsocial https://charts.myriad.social
 helm repo update
-helm install myriad-node myriadsocial/myriad-node
+helm install myriad-api myriadsocial/myriad-api
 ```

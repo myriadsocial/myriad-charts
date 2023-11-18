@@ -39,6 +39,15 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if and .Values.config.secretsStore.enabled .Values.config.secretsStore.providerClass }}
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Values.config.secretsStore.providerClass }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -47,6 +56,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if not .Values.config.secretsStore.enabled }}
           env:
             {{- if .Values.config.app.environment }}
             - name: NEXT_PUBLIC_APP_ENVIRONMENT
@@ -87,6 +97,18 @@ spec:
             - name: NEXT_PUBLIC_SENTRY_DSN
               value: {{ .Values.config.sentry.dsn }}
             {{- end }}
+          {{- end }}
+          {{- if .Values.config.secretsStore.enabled }}
+          envFrom:
+            {{- if .Values.config.secretsStore.name }}
+            - secretRef:
+                name: {{ .Values.config.secretsStore.name }}
+            {{- end }}
+          volumeMounts:
+            - name: secrets-store
+              mountPath: "/var/secrets"
+              readOnly: true
+          {{- end }}
           ports:
             - name: http
               containerPort: 3000

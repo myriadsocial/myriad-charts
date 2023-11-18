@@ -14,6 +14,10 @@ image:
 imagePullSecrets: []
 
 config:
+  secretsStore:
+    enabled: false
+    providerClass: ""
+    name: ""
   domain: ""
   adminSubstrateMnemonic: ""
   adminNearMnemonic: ""
@@ -50,6 +54,12 @@ config:
     apiKey: ""
   coinMarketCap:
     apiKey: ""
+  startupProbe:
+    path: ""
+  livenessProbe:
+    path: ""
+  readinessProbe:
+    path: ""
 
 serviceAccount:
   # Specifies whether a service account should be created

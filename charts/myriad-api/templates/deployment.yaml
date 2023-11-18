@@ -39,7 +39,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- if .Values.config.firebase.serviceAccountBase64 }}
+      {{- if and (not .Values.config.secretsStore.enabled) .Values.config.firebase.serviceAccountBase64 }}
       volumes:
         - name: google-service-account-credentials
           secret:
@@ -47,6 +47,15 @@ spec:
             items:
               - key: serviceAccount
                 path: sa_credentials.json
+      {{- end }}
+      {{- if and .Values.config.secretsStore.enabled .Values.config.secretsStore.providerClass }}
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Values.config.secretsStore.providerClass }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -56,6 +65,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if not .Values.config.secretsStore.enabled }}
           env:
             {{- if .Values.config.domain }}
             - name: DOMAIN
@@ -196,6 +206,18 @@ spec:
           volumeMounts:
             - name: google-service-account-credentials
               mountPath: /etc/google
+              readOnly: true
+          {{- end }}
+          {{- end }}
+          {{- if .Values.config.secretsStore.enabled }}
+          envFrom:
+            {{- if .Values.config.secretsStore.name }}
+            - secretRef:
+                name: {{ .Values.config.secretsStore.name }}
+            {{- end }}
+          volumeMounts:
+            - name: secrets-store
+              mountPath: "/var/secrets"
               readOnly: true
           {{- end }}
           ports:
